@@ -15,7 +15,7 @@ weatherController.get("/weather", async (req: Request, res: Response) => {
             lon = parseFloat(cordsarray[1]);
         } else {
             res.status(400).json({
-                error: "Latitude and longitude parameters are required",
+                error: "Bad request: Latitude and longitude parameters are required",
             });
             return;
         }
@@ -26,7 +26,7 @@ weatherController.get("/weather", async (req: Request, res: Response) => {
         res.json(weather);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: "Error al obtener el clima" });
+        res.status(500).json({ error: "Error getting the weather" });
     }
 });
 
